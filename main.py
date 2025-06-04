@@ -24,16 +24,18 @@ def main():
             if event.type == pygame.QUIT:
                 return
         
+        # Update player position/angle
+        player.update(dt)
+        
         # Blacken screen
         screen.fill("black")
 
         # Redraw the player
         player.draw(screen)
+        
 
         # Refresh the screen
         pygame.display.flip()
-
-
 
         # Limit to 60fps and update delta time
         dt  = clock.tick(60) / 1000
