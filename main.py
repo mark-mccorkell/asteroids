@@ -3,6 +3,7 @@
 # throughout this file
 import pygame
 from constants import *
+from player import Player
 
 def main():
 
@@ -13,6 +14,9 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    # Create a Player object in the centre of the screen
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
     # Main game loop
     while True:
         # Check for quit event
@@ -20,9 +24,16 @@ def main():
             if event.type == pygame.QUIT:
                 return
         
-        # Blacken screen and refresh
+        # Blacken screen
         screen.fill("black")
+
+        # Redraw the player
+        player.draw(screen)
+
+        # Refresh the screen
         pygame.display.flip()
+
+
 
         # Limit to 60fps and update delta time
         dt  = clock.tick(60) / 1000
